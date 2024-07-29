@@ -3,35 +3,35 @@
 const fs = require('fs');
 
 let command = process.argv[2]
-let filename = process.argv[3];
+let file = process.argv[3];
 
-if(!filename){
-    filename = command
+if(!file){
+    file = command
     command = null
 }
 
-if(fs.existsSync(filename)){
+if(fs.existsSync(file)){
 
     switch(command){
        
         case '-w' :
-            console.log(`File: ${filename}\nWordCount: ${wordCount()} `);
+            console.log(`File: ${file}\nWordCount: ${wordCount()} `);
             break;
       
         case '-b' : 
-            console.log(`File: ${filename}\nByteCount: ${byteCount()} `);
+            console.log(`File: ${file}\nByteCount: ${byteCount()} `);
             break;
         
         case '-l' :
-            console.log(`File: ${filename}\nLineCount: ${LineCount()} `);
+            console.log(`File: ${file}\nLineCount: ${LineCount()} `);
             break;
        
         case '-c' :
-            console.log(`File: ${filename}\nCharacterCount: ${charCount()} `);
+            console.log(`File: ${file}\nCharacterCount: ${charCount()} `);
             break;
         
         case null :
-                console.log(`File: ${filename} \nByteCount: ${byteCount()} \nWordCount: ${wordCount()} \nLineCount: ${lineCount()} \nCharacterCount: ${charCount()} `)
+                console.log(`File: ${file} \nByteCount: ${byteCount()} \nWordCount: ${wordCount()} \nLineCount: ${lineCount()} \nCharacterCount: ${charCount()} `)
                 break;
 
         default:
@@ -44,12 +44,12 @@ if(fs.existsSync(filename)){
     }
 
 }else{
-   console.log("file with the specified filename couldn't be found");
+   console.log("file with the specified file couldn't be found");
 }
 
 function charCount(){
     try{
-        let data = fs.readFileSync(filename,'utf-8')
+        let data = fs.readFileSync(file,'utf-8')
         return data.length
          
     }catch(error){
@@ -60,7 +60,7 @@ function charCount(){
 
 function wordCount(){
        try{
-         let data = fs.readFileSync(filename,'utf-8');
+         let data = fs.readFileSync(file,'utf-8');
          return data.split(/\s+/).filter(Boolean).length;
        }catch(error){
         console.log(error.message);
@@ -69,7 +69,7 @@ function wordCount(){
 
 function byteCount(){
     try{
-          let binary = fs.readFileSync(filename);
+          let binary = fs.readFileSync(file);
           return binary.length;
     }catch(error){
        console.log(error.message);
@@ -78,7 +78,7 @@ function byteCount(){
 
 function lineCount(){
       try {
-        let data = fs.readFileSync(filename,'utf-8')
+        let data = fs.readFileSync(file,'utf-8')
         return data.split(/\r\n|\r|\n/).length;
       } catch (error) {
         console.log(error.message)

@@ -13,23 +13,23 @@ if(fs.existsSync(filename)){
     switch(command){
        
         case '-w' :
-            console.log(`${wordCount()} ${filename}`)
+            console.log(`File: ${filename}\nWordCount: ${wordCount()} `);
             break;
       
         case '-b' : 
-            console.log(`${byteCount()} ${fileName}`);
+            console.log(`File: ${filename}\nByteCount: ${byteCount()} `);
             break;
         
         case '-l' :
-            console.log(`${lineCount()} ${filename}`)
+            console.log(`File: ${filename}\nLineCount: ${LineCount()} `);
             break;
        
         case '-c' :
-            console.log(`${charCount()} ${filename}`);
+            console.log(`File: ${filename}\nCharacterCount: ${charCount()} `);
             break;
         
         case null :
-                console.log(`${byteCount()} ${wordCount()} ${lineCount()} ${filename}`)
+                console.log(`File: ${filename} \nByteCount: ${byteCount()} \nWordCount: ${wordCount()} \nLineCount: ${lineCount()} \nCharacterCount: ${charCount()} `)
                 break;
 
         default:
